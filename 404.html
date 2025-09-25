@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting…</title>
+  <script>
+    const redirects = {
+      "tw": "https://twitter.com/izarivfx"
+      // add more like "yt": "https://youtube.com/..."
+    };
+
+    const path = window.location.pathname.replace(/^\/|\/$/g, "");
+    if (redirects[path]) {
+      window.location.replace(redirects[path]);
+    } else {
+      // Not in list → show fallback
+      document.body.innerHTML = `
+        <h1>404 – Not Found</h1>
+        <p>No redirect found for <code>/${path}</code>.</p>
+      `;
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
