@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Your redirects live here:
+    const redirects = {
+      "gh": "https://github.com/izaridev",
+      "tw": "https://x.com/izarivfx",
+      // add more like "key": "https://destination"
+    };
+
+    // Get the path (strip leading/trailing slashes)
+    const path = window.location.pathname.replace(/^\/|\/$/g, "");
+
+    if (redirects[path]) {
+      // Redirect instantly
+      window.location.replace(redirects[path]);
+    } else if (path) {
+      // Show a simple 404 if path not found
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.innerHTML = `
+          <h1>404 – Not Found</h1>
+          <p>No redirect found for <code>/${path}</code>.</p>
+        `;
+      });
+    } else {
+      // Optional: root page content
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.innerHTML = `
+          <h1>Welcome to dhm.onl 🚀</h1>
+          <p>This is my personal shortlink service.</p>
+          <p>Examples: <a href="/gh">/gh</a>, <a href="/tw">/tw</a>, <a href="/yt">/yt</a></p>
+        `;
+      });
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
